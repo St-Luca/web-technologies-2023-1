@@ -1,16 +1,12 @@
 .select {
   min-width: 250px;
   position: relative;
-  
-  &_open {
-    & .select__inner {
-      display: block;
-    }
-    
-    & .select__icon {
-      transform: rotate(0deg);
-    }
-  }
+}
+.select_open .select__inner {
+  display: block;
+}
+.select_open .select__icon {
+  transform: rotate(0deg);
 }
 
 .select__header {
@@ -44,9 +40,10 @@
   padding: 12px;
   color: #636363;
   cursor: pointer;
-  
-  &:hover {
-    background: #E5E5E5;
-    color: #202020;
-  }
 }
+.select__item:hover {
+  background: #E5E5E5;
+  color: #202020;
+}
+
+/*# sourceMappingURL=select.css.map */

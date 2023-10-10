@@ -26,8 +26,9 @@
 .filters__controls {
   display: flex;
   gap: 14px;
-  
-  & .filters__control-item {
-    cursor: pointer;
-  }
 }
+.filters__controls .filters__control-item {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=filters.css.map */
