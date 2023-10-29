@@ -2,6 +2,10 @@
 @import "./fonts.css";
 @import "./utils.css";
 
+body{
+    width:1440;
+}
+
 .header {
     top: 30px;
     left: 108px;
