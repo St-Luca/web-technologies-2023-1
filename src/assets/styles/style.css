@@ -2,9 +2,29 @@
 @import "./fonts.css";
 @import "./utils.css";
 
-.header {
+/* @media screen and (max-width: 768px) { */
+
+body {
+    width: 768;
+}
+
+.menu-bars {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    background-color: #2D66EE;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.header-menu {
     top: 30px;
-    left: 108px;
+    width: 768px;
     box-sizing: border-box;
     border-radius: 12px;
     background: #FFF;
@@ -38,15 +58,26 @@ span.speciality {
     color: #306FF5;
 }
 
-ul.header-menu {
+.menu-items {
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+.menu-items.active {
+    display: block;
+}
+
+ul.header-menu-hide {
     list-style-type: none;
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 8px;
     color: black;
 }
 
-ul.header-phones {
+ul.header-phones-hide {
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -61,19 +92,15 @@ ul.header-mail {
 }
 
 .begin-information {
-    margin: 0;
     position: relative;
     height: 900px;
-    width: 1440px;
-    flex-shrink: 0;
     background: #F2F4F7;
     overflow: hidden;
 
-    background-image: url('\\src\\assets\\img\\backgr.png'), url('\\src\\assets\\img\\backgr right.png'), url('\\src\\assets\\img\\top left backgr.png'),
-        url('\\src\\assets\\img\\top right backgr.png'), url('\\src\\assets\\img\\bottom left backgr.png'), url('\\src\\assets\\img\\bottom right backgr.png');
+    background-image: url('\\src\\assets\\img\\desktop ver img\\backgr.png'), url('\\src\\assets\\img\\desktop ver img\\backgr right.png'), url('\\src\\assets\\img\\desktop ver img\\top left backgr.png'),
+        url('\\src\\assets\\img\\desktop ver img\\top right backgr.png'), url('\\src\\assets\\img\\desktop ver img\\bottom left backgr.png'), url('\\src\\assets\\img\\desktop ver img\\bottom right backgr.png');
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     background-position: 670.73px 0px, right 30px, 620.73px 0px, 970px 0px, 913.73px 760px, bottom right;
-    background-position-x: right center;
 }
 
 .main-info {
@@ -81,7 +108,7 @@ ul.header-mail {
     left: 108px;
     flex-direction: column;
     align-items: flex-start;
-    width: 600px;
+    width: 500px;
     z-index: 1;
     position: relative;
 
@@ -149,6 +176,16 @@ ul.header-mail {
     margin-bottom: 19px;
 }
 
+.development-info {
+    width: 636px;
+    height: 464px;
+    top: 794px;
+    left: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stack-technologies {}
 
 .footer {
     position: relative;
@@ -160,8 +197,6 @@ ul.header-mail {
     color: #FFF;
     box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.08), 0 0 2px 0 rgba(0, 0, 0, 0.08);
     bottom: 10px;
-    left: 108px;
-    width: 85%;
     margin: 0px;
 }
 
@@ -243,4 +278,30 @@ li.phones {
 
 img {
     margin-right: 5px
+}
+
+
+
+@media screen and (min-width: 768px) {
+    /* body {
+        width: 1440px;
+    } */
+
+    /* .begin-information {
+        background-image: url('\\src\\assets\\img\\desktop ver img\\backgr.png'), url('\\src\\assets\\img\\desktop ver img\\backgr right.png'), url('\\src\\assets\\img\\desktop ver img\\top left backgr.png'),
+        url('\\src\\assets\\img\\desktop ver img\\top right backgr.png'), url('\\src\\assets\\img\\desktop ver img\\bottom left backgr.png'), url('\\src\\assets\\img\\desktop ver img\\bottom right backgr.png');
+        background-position: 670.73px 0px, right 30px, 620.73px 0px, 970px 0px, 913.73px 760px, bottom right;
+    } */
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 768px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    body {
+        width: 425px;
+    }
 }
