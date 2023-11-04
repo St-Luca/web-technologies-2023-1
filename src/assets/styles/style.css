@@ -76,7 +76,7 @@ ul.header-mail {
     background-image: url('\\src\\assets\\img\\backgr.png'), url('\\src\\assets\\img\\backgr right.png'), url('\\src\\assets\\img\\top left backgr.png'),
         url('\\src\\assets\\img\\top right backgr.png'), url('\\src\\assets\\img\\bottom left backgr.png'), url('\\src\\assets\\img\\bottom right backgr.png');
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position: 670.73px 0px, right 30px, 620.73px 0px, 970px 0px, 913.73px 760px, bottom right;
+    background-position: 670.73px 0px, 1100px 30px, 620.73px 0px, 970px 0px, 913.73px 760px, 1235.73px 689px;
     background-position-x: right center;
 }
 
