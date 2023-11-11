@@ -1,0 +1,140 @@
+//Задание 1
+const students = [
+    { name: 'Павел', age: 20 },
+    { name: 'Иван', age: 20 },
+    { name: 'Эдем', age: 20 },
+    { name: 'Денис', age: 20 },
+    { name: 'Виктория', age: 20 },
+    { age: 40 },
+];
+
+function pickPropArray(array, property) {
+    return array
+        .filter(array_item => array_item.hasOwnProperty(property))
+        .map(array_item => array_item[property]);
+}
+
+const result = pickPropArray(students, 'name');
+console.log(result);
+
+//Задание 2
+function createCounter() {
+    let count = 0;
+
+    return function () {
+        count++;
+        console.log(count);
+    }
+}
+
+const counter1 = createCounter();
+counter1();
+counter1();
+
+const counter2 = createCounter();
+counter2();
+counter2();
+
+//Задание 3
+function spinWords(str) {
+    const words = str.split(' ');
+    const result = words.map(word => {
+        if (word.length >= 5) {
+            return word.split('').reverse().join('');
+        }
+        else return word;
+    });
+
+    return result.join(' ');
+}
+
+const result1 = spinWords("Привет от Legacy");
+console.log(result1);
+
+const result2 = spinWords("This is a test");
+console.log(result2);
+
+//Задание 4
+function targetPair(nums, target) {
+    const result = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                result.push([i, j]);
+            }
+        }
+    }
+
+    return result;
+}
+
+const nums = [2, 7, 11, 15];
+const target = 9;
+const result3 = targetPair(nums, target);
+
+console.log(result3);
+
+const nums2 = [2, 7, 11, 15, 7, 2, 4, 5];
+const target2 = 9;
+const result4 = targetPair(nums2, target2);
+
+console.log(result4);
+
+//Задание 5
+
+function splitIntoPrefixes(str, prefixLength) {
+    const prefixes = [];
+    for (let i = 0; i < str.length - prefixLength + 1; i++) {
+        prefixes.push(str.slice(i, i + prefixLength));
+    }
+    return prefixes;
+}
+
+function longestPrefix(strs) {
+    if (!strs || strs.length === 0) {
+        return "";
+    }
+
+    let bestPrefix = "";
+
+    for (let prefixLength = 2; prefixLength <= strs[0].length; prefixLength++) {
+        // Делим строки на префиксы, учитывая мин. размер = 2
+        const prefixes = strs.map(str => splitIntoPrefixes(str, prefixLength));
+
+        // Находим пересечения
+        const commonPrefixes = prefixes.reduce((intersection, current) =>
+            intersection.filter(prefix => current.includes(prefix))
+        );
+
+        // Находим длиннейшее пересечение
+        if (commonPrefixes.length > 0) {
+            bestPrefix = commonPrefixes.reduce((longest, current) =>
+                current.length > longest.length ? current : longest
+            );
+        } else {
+            // Пересечений нет
+            break;
+        }
+    }
+
+    if (bestPrefix.length >= 2) {
+        return bestPrefix;
+    }
+    else return "";
+}
+
+const strs01 = ["цветок", "поток", "хлопок"] //ок
+console.log(longestPrefix(strs01));
+
+const strs02 = ["собака", "гоночная машина", "машина"] // ""
+console.log(longestPrefix(strs02));
+
+const strs1 = ["flower", "flow", "flight"];
+console.log(longestPrefix(strs1));  // fl
+
+const strs2 = ["dog", "racecar", "car"];
+console.log(longestPrefix(strs2));  // ""
+
+const strs22 = ["racecar", "racecar", "racecar"];
+console.log(longestPrefix(strs22));  // "racecar
