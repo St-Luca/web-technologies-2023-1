@@ -14,7 +14,7 @@ function init() {
                 hasChildren: true,
                 items: [
                     {
-                        name: 'Ulgran1',
+                        name: 'Ulgran',
                         hasChildren: true,
                         items: [
                             {
@@ -30,7 +30,12 @@ function init() {
                         ]
                     },
                     {
-                        name: 'Ulgran2',
+                        name: 'VigroMramor',
+                        hasChildren: false,
+                        items: []
+                    },
+                    {
+                        name: 'Handmade',
                         hasChildren: true,
                         items: [
                             {
@@ -44,9 +49,15 @@ function init() {
                                 items: []
                             }
                         ]
+                    },
+                    {
+                        name: 'VigroGlass',
+                        hasChildren: false,
+                        items: []
                     }
                 ]
-            },{
+            },
+            {
                 name: 'Фильтры',
                 hasChildren: true,
                 items: [
@@ -65,20 +76,24 @@ function init() {
                                 items: []
                             }
                         ]
-                    }
+                    },
+                    {
+                        name: 'VigroMramor',
+                        hasChildren: false,
+                        items: []
+                    },
                 ]
             }
         ]
     }
 
 
-    const items = new ListItems(document.getElementById('list-items'), data)
+    const items = new ListItems(document.getElementById('list-items'), data);
+    items.init();
+    items.render();
 
 
-  /*  items.render()*/
-    items.init()
-
-    /*console.log(items.renderTest(data));*/
+    console.log(items.renderTest(data));
 
     function ListItems(el, data) {
         this.el = el;
@@ -90,7 +105,7 @@ function init() {
             parents.forEach(parent => {
                 const open = parent.querySelector('[data-open]')
 
-                open.addEventListener('click', () => this.toggleItems(parent) )
+                open.addEventListener('click', () => this.toggleItems(parent))
             })
         }
 
@@ -99,26 +114,37 @@ function init() {
         }
 
         this.renderParent = function (data) {
-            //проверка всех элементов на hasChildren
-            //если hasChildren, то запускаем renderParent
-            //если !hasChildren, то запускаем renderChildren
-            //возвращает рендер родительского элемента
+            let html = `<div class="list-item" data-parent>`;
+            html += `<div class="list-item-header" data-open>${data.name}</div>`;
 
-        }
+            if (data.hasChildren) {
+                html += '<div class="list-item-children">';
+                data.items.forEach(child => {
+                    html += this.renderParent(child);
+                });
+                html += '</div>';
+            }
+
+            html += '</div>';
+            return html;
+        };
 
         this.renderChildren = function (data) {
-            //вовзращает рендер элемента без вложенности
+            let html = `<div class="list-item" data-parent>`;
+            html += `<div class="list-item-header" data-open>${data.name}</div>`;
+            html += '</div>';
+            return html;
         }
 
         this.toggleItems = function (parent) {
             parent.classList.toggle('list-item_open')
         }
 
-/*        this.renderTest = function (data) {
-            return `
-            <div class="test">${data.name}</div>
-            `
-        }*/
+        // this.renderTest = function (data) {
+        //     return `
+        //             <div class="test">${data.name}</div>
+        //             `
+        // }
     }
 
 }
