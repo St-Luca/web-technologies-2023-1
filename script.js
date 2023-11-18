@@ -18,12 +18,12 @@ function init() {
                         hasChildren: true,
                         items: [
                             {
-                                name: 'SMT1',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             },
                             {
-                                name: 'SMT2',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             }
@@ -39,12 +39,12 @@ function init() {
                         hasChildren: true,
                         items: [
                             {
-                                name: 'SMT3',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             },
                             {
-                                name: 'SMT4',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             }
@@ -62,16 +62,16 @@ function init() {
                 hasChildren: true,
                 items: [
                     {
-                        name: 'Ulgran3',
+                        name: 'Ulgran',
                         hasChildren: true,
                         items: [
                             {
-                                name: 'SMT5',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             },
                             {
-                                name: 'SMT6',
+                                name: 'Smth',
                                 hasChildren: false,
                                 items: []
                             }
@@ -167,15 +167,3 @@ function init() {
                 }*/
     }
 }
-
-
-/*if (data.hasChildren) {
-                html += `<div class="list-item__items">`; //элеметы дети
-                data.items.forEach(child => {
-                    html += this.renderParent(child);
-                });
-                html += '</div>';
-            }
-            else {
-                this.renderChildren(data);
-            }*/
