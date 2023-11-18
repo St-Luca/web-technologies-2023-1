@@ -112,56 +112,48 @@ function init() {
         }
 
         this.renderParent = function (data) {
-            let html = `<div class="list-item list-item_open" data-parent>`;
-            html += `<div class="list-item__inner">`;
-
-            // if (data.hasChildren) {
-            //     html += `<img class="list-item__arrow" src="img/chevron-down.png" alt="chevron-down" data-open>`;
-            //     html += `<img class="list-item__folder" src="img/folder.png" alt="folder">`;
-
-            // }
-            // else {
-            //     html += `<img class="list-item__folder" src="img/folder.png" alt="folder" data-open>`;
-            // }
-            html += `<img class="list-item__arrow" src="img/chevron-down.png" alt="chevron-down" data-open>`;
-            html += `<img class="list-item__folder" src="img/folder.png" alt="folder">`;
-
-            html += `<span>${data.name}</span>`;
-            html += '</div>';
-            /*if (data.hasChildren) {
-                html += `<div class="list-item__items">`; //элеметы дети
-                data.items.forEach(child => {
-                    html += this.renderParent(child);
-                });
-                html += '</div>';
-            }
-            else {
-                this.renderChildren(data);
-            }
-            //возвращает рендер родительского элемента
-            return html;*/
-            html += '<div class="list-item__items">';
+            let arrowImg = '';
             if (data.hasChildren) {
-                data.items.forEach(child => {
-                    html += this.renderParent(child);
-                });
+                arrowImg = '<img class="list-item__arrow" src="img/chevron-down.png" alt="chevron-down" data-open>';
+            } else {
+                arrowImg = '<img class="list-item__arrow" src="img/transparent.png" data-open alt="transparent" style="visibility: hidden;">';
             }
-            // else {
-            //     html += `<img class="list-item__folder" src="img/folder.png" alt="folder">`;
 
-            //     html += `<span>${data.name}</span>`;
-            // }
-            html += '</div>';
-            html += '</div>';
+            let html = `
+                <div class="list-item list-item_open" data-parent>
+                    <div class="list-item__inner">
+                    ${arrowImg}
+                        <img class="list-item__folder" src="img/folder.png" alt="folder">
+                        <span>${data.name}</span>
+                    </div>
+                    <div class="list-item__items">
+                        ${this.renderChildren(data)}
+                    </div>
+                </div>
+            `;
             return html;
         }
 
         this.renderChildren = function (data) {
-            let html = `<div class="list-item__inner">`;
-            html += `<img class="list-item__folder" src="img/folder.png" alt="folder">`;
-            html += `<span>${data.name}</span>`;
-            html += `</div>`;
-            return html;
+            let childrenHtml = '';
+            if (data.hasChildren) {
+                data.items.forEach(child => {
+                    childrenHtml += this.renderParent(child);
+                });
+            } else {
+                data.items.forEach(child => {
+                    childrenHtml += `
+                <div class="list-item">
+                    <div class="list-item__inner">
+                        <img class="list-item__folder" src="img/folder.png" alt="folder">
+                        <span>${child.name}</span>
+                    </div>
+                    <div class="list-item__items"></div>
+                </div>
+            `;
+                });
+            }
+            return childrenHtml;
         }
 
         this.toggleItems = function (parent) {
@@ -175,3 +167,15 @@ function init() {
                 }*/
     }
 }
+
+
+/*if (data.hasChildren) {
+                html += `<div class="list-item__items">`; //элеметы дети
+                data.items.forEach(child => {
+                    html += this.renderParent(child);
+                });
+                html += '</div>';
+            }
+            else {
+                this.renderChildren(data);
+            }*/
