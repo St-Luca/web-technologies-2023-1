@@ -1,4 +1,4 @@
-import {TicTacToe} from "./components/TicTacToe.js";
+import { TicTacToe } from "./components/TicTacToe.js";
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init)
@@ -6,12 +6,12 @@ if (document.readyState === 'loading') {
     init()
 }
 
-function init() {    
+function init() {
     const moveEl = document.getElementById('move-value')
-    
+
     const onMove = (isXTurn) => {
         let currentMove
-        
+
         if (isXTurn) {
             currentMove = 'X'
         } else {
@@ -27,9 +27,9 @@ function init() {
             onMove,
         }
     )
-    
+
     game.startGame()
-    
+
     const restartBtn = document.getElementById('restart-btn')
 
     restartBtn.addEventListener('click', () => {
