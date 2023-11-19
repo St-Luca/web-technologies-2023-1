@@ -105,7 +105,7 @@ export const TicTacToe = {
     for (let row = 0; row < this.matrix.length; row++) {
       for (let col = 0; col < this.matrix[row].length; col++) {
         if (!this.matrix[row][col]) {
-          return true; // если есть пустое значение, вернуть true
+          return true;
         }
       }
     }
@@ -223,6 +223,7 @@ export const TicTacToe = {
         this.matrix[third[0] - 1][third[1] - 1] === this.matrix[second[0] - 1][second[1] - 1]
       ) {
         this.isGameEnd = true;
+        return (this.setGameEndStatus);
       }
     }
 
