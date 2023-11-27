@@ -692,13 +692,14 @@ const game = {
    */
   canMakeStep() {
     const nextStepHead = this.snake.getNextStepHeadPoint();
-    return (
-      nextStepHead.x >= 0 &&
-      nextStepHead.x < this.config.getColsCount() &&
-      nextStepHead.y >= 0 &&
-      nextStepHead.y < this.config.getRowsCount() &&
-      !this.snake.isOnPoint(nextStepHead)
-    );
+    const withinRows = nextStepHead.y >= 0 && nextStepHead.y < this.config.getRowsCount();
+    const withinCols = nextStepHead.x >= 0 && nextStepHead.x < this.config.getColsCount();
+    const notCollidingWithSnake = !this.snake.isOnPoint(nextStepHead);
+
+    // Проверка на столкновение со стеной
+    const notCollidingWithWall = withinRows && withinCols;
+
+    return notCollidingWithWall && notCollidingWithSnake;
   },
 };
 
