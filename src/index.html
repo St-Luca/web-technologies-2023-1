@@ -4,122 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/global.css">
     <title>Pizza Calculator</title>
-    <style>
-        /* Styles for slider */
-        .slider {
-            width: 200px;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            opacity: 0.7;
-            border-radius: 10px;
-        }
 
-        /* Styles for topping options */
-        .topping-option {
-            cursor: pointer;
-            margin-right: 10px;
-            border: 2px solid transparent;
-            display: inline-block;
-            width: 150px;
-        }
-
-        .topping-option img {
-            width: 100%;
-            height: auto;
-        }
-
-        .topping-option.selected {
-            border-color: green;
-        }
-
-        /* Styles for pizza images container */
-        .pizza-images {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .pizza-item {
-            width: 30%;
-            margin-bottom: 10px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .pizza-item img {
-            width: 100%;
-        }
-
-        .pizza-caption {
-            margin-top: 5px;
-        }
-
-        /* Styles for cart items */
-        .cart-item {
-            margin-bottom: 10px;
-        }
-
-        /* Styles for main container */
-        .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            /* добавлены отступы слева и справа */
-        }
-
-        .left-column,
-        .right-column {
-            background-color: #f0f0f0;
-            /* очень светло-серый цвет фона */
-            padding: 10px;
-            /* добавлены отступы внутри колонок */
-            border-radius: 5px;
-            /* добавлены скругления краев */
-        }
-
-        .left-column {
-            width: 45%;
-            margin-right: 10px;
-            /* добавлен отступ справа */
-        }
-
-        .right-column {
-            width: 45%;
-            margin-left: 10px;
-            /* добавлен отступ слева */
-        }
-
-        #addToCartButton {
-            width: 150px;
-            background-color: orange;
-            border: none;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            opacity: 0.9;
-            border-radius: 30px;
-            /* сделана кнопка овальной */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-        }
-
-        #addToCartButton:hover {
-            opacity: 1;
-        }
-
-        #addToCartButton:focus {
-            outline: none;
-        }
-
-        #addToCartButton:active {
-            transform: translateY(2px);
-        }
-    </style>
 </head>
 
 <body>
@@ -135,7 +22,7 @@
                     <div class="pizza-caption">Пепперони</div>
                 </div>
                 <div class="pizza-item" onclick="selectPizza(new Bavarian('Small'))">
-                    <img src="assets/img/bavarian.jpg" alt="Bavarian">
+                    <img src="assets/img/bavarian.jpg" alt="Bavarian" style="width: 100%; height: 81%;">
                     <div class="pizza-caption">Баварская</div>
                 </div>
             </div>
@@ -144,36 +31,42 @@
             <div>
                 <h2>Выбрать размер:</h2>
                 <div class="slider">
-                    <label for="sizeSmall">Маленькая</label>
-                    <input type="range" min="0" max="1" value="0" class="slider" id="sizeSlider"
+                    <label for="sizeSmall" id="sizeSmallLabel">Маленькая</label>
+                    <input type="range" min="0" max="1" value="0" class="slider" id="sizeSliderInput"
                         onchange="calculatePizza()">
-                    <label for="sizeBig">Большая</label>
+                    <label for="sizeBig" id="sizeBigLabel">Большая</label>
                 </div>
                 <h2>Добавить по вкусу:</h2>
                 <div class="topping-option">
-                    <img src="assets/img/creamyMozzarella.jpg" alt="Creamy mozzarella"
-                        onclick="toggleTopping(Toppings.CreamyMozzarella)">
-                    <p>Сливочная моцарелла <span id="toppingPriceMozzarella">+50</span></p>
+                    <img src="assets/img/creamyMozzarella.jpg" alt="CreamyMozzarella"
+                        onclick="toggleTopping(Toppings.CreamyMozzarella)" style="width: 100%; height: 200px;">
+                    <p>Сливочная моцарелла</p>
+                    <p><span id="toppingPriceCreamyMozzarella">+50₽</span></p>
                 </div>
+
                 <div class="topping-option">
-                    <img src="assets/img/cheeseBoard.jpg" alt="Cheese board"
-                        onclick="toggleTopping(Toppings.CheeseBoard)">
-                    <p>Сырный бортик <span id="toppingPriceCheese">+150</span></p>
+                    <img src="assets/img/cheeseBoard.jpg" alt="CheeseBoard"
+                        onclick="toggleTopping(Toppings.CheeseBoard)" style="width: 100%;">
+                    <p>Сырный борт</p>
+                    <p><span id="toppingPriceCheeseBoard">+150₽</span></p>
                 </div>
+
                 <div class="topping-option">
-                    <img src="assets/img/cheddarAndParmesan.jpg" alt="Cheddar and parmesan"
-                        onclick="toggleTopping(Toppings.CheddarAndParmesan)">
-                    <p>Чеддер и пармезан <span id="toppingPriceCheddar">+150</span></p>
+                    <img src="assets/img/cheddarAndParmesan.jpg" alt="CheddarAndParmesan"
+                        onclick="toggleTopping(Toppings.CheddarAndParmesan)" style="width: 100%;">
+                    <p>Чеддер и пармезан</p>
+                    <p><span id="toppingPriceCheddarAndParmesan">+150₽</span></p>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <button id="addToCartButton" onclick="addToCart()">Добавить в корзину<span id="buttonPrice"></span></button>
+    <button id="addToCartButton">Добавить в корзину за <span id="buttonPrice"></span></button>
 
     <script>
         const PizzaSizes = { Big: 'Big', Small: 'Small' };
-        const Toppings = { CreamyMozzarella: 'Creamy mozzarella', CheeseBoard: 'Cheese board', CheddarAndParmesan: 'Cheddar and parmesan' }
+        const Toppings = { CreamyMozzarella: 'CreamyMozzarella', CheeseBoard: 'CheeseBoard', CheddarAndParmesan: 'CheddarAndParmesan' }
 
         class Pizza {
             constructor(size) {
@@ -192,6 +85,9 @@
                             this.calories += 20;
                             break;
                         case Toppings.CheeseBoard:
+                            this.price += (this.size === PizzaSizes.Big) ? 300 : 150;
+                            this.calories += 50;
+                            break;
                         case Toppings.CheddarAndParmesan:
                             this.price += (this.size === PizzaSizes.Big) ? 300 : 150;
                             this.calories += 50;
@@ -217,6 +113,9 @@
                             this.calories -= 20;
                             break;
                         case Toppings.CheeseBoard:
+                            this.price -= (this.size === PizzaSizes.Big) ? 300 : 150;
+                            this.calories -= 50;
+                            break;
                         case Toppings.CheddarAndParmesan:
                             this.price -= (this.size === PizzaSizes.Big) ? 300 : 150;
                             this.calories -= 50;
@@ -235,7 +134,7 @@
             }
 
             calculatePizza() {
-                document.getElementById('buttonPrice').textContent = `${this.getPrice()} руб., (${this.getCalories()} кКал)`; // Обновляем информацию на кнопке
+                document.getElementById('buttonPrice').textContent = `${this.getPrice()} руб., (${this.getCalories()} кКал)`;
             }
 
             getSize = () => this.size
@@ -285,7 +184,8 @@
         function selectPizza(pizza) {
             selectedPizza = pizza;
             document.querySelectorAll('.pizza-item').forEach(item => item.style.border = '');
-            document.querySelector('.pizza-item img[alt="' + pizza.getKind() + '"]').parentNode.style.border = '2px solid green';
+            document.querySelectorAll('.topping-option').forEach(item => item.classList.remove('selected'));
+            document.querySelector('.pizza-item img[alt="' + pizza.getKind() + '"]').parentNode.style.border = '2px solid black';
             calculatePizza();
         }
 
@@ -296,28 +196,37 @@
         }
 
         function calculatePizza() {
-            const selectedSize = document.getElementById('sizeSlider').value === '0' ? PizzaSizes.Small : PizzaSizes.Big;
+            const selectedSize = document.getElementById('sizeSliderInput').value === '0' ? PizzaSizes.Small : PizzaSizes.Big;
             if (selectedPizza !== null) {
+                if (selectedSize !== selectedPizza.getSize()) {
+                    selectedPizza.toppings = [];
+                    document.querySelectorAll('.topping-option').forEach(item => item.classList.remove('selected'));
+                }
                 selectedPizza = new selectedPizza.constructor(selectedSize);
-                document.getElementById('buttonPrice').textContent = `${selectedPizza.getPrice()} руб., (${selectedPizza.getCalories()} кКал)`; // Обновляем информацию на кнопке
+                recalculateToppingPrices(selectedSize);
+                document.getElementById('buttonPrice').textContent = `${selectedPizza.getPrice()} руб., (${selectedPizza.getCalories()} кКал)`;
             }
         }
 
-        function addToCart() {
-            if (selectedPizza !== null) {
-                const cartItems = document.getElementById('cartItems');
-                const cartItem = document.createElement('li');
-                cartItem.classList.add('cart-item');
-                cartItem.textContent = `${selectedPizza.getKind()} - Размер: ${selectedPizza.getSize()}, Цена: ${selectedPizza.getPrice()}, Калории: ${selectedPizza.getCalories()}, Добавки: ${selectedPizza.toppings.join(', ')}`;
-                cartItems.appendChild(cartItem);
-            }
+        function recalculateToppingPrices(size) {
+            const toppingPrices = {
+                [Toppings.CreamyMozzarella]: { Small: 50, Big: 100 },
+                [Toppings.CheeseBoard]: { Small: 150, Big: 300 },
+                [Toppings.CheddarAndParmesan]: { Small: 150, Big: 300 }
+            };
+
+            Object.keys(toppingPrices).forEach(topping => {
+                const toppingElement = document.getElementById(`toppingPrice${topping}`);
+                if (toppingElement) {
+                    const price = toppingPrices[topping][size];
+                    toppingElement.textContent = `+${price}₽`;
+                }
+            });
         }
 
-        // Добавляем обработчик события на всю область слайдера
-        document.getElementById('sizeSlider').addEventListener('input', () => {
-            const slider = document.getElementById('sizeSlider');
-            slider.value = slider.value === '0' ? '1' : '0';
+        document.getElementById('sizeSliderInput').addEventListener('change', () => {
             calculatePizza();
+            recalculateToppingPrices(document.getElementById('sizeSliderInput').value === '0' ? PizzaSizes.Small : PizzaSizes.Big);
         });
     </script>
 </body>

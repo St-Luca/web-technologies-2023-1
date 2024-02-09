@@ -1,11 +1,112 @@
-html {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+body {
+    font-family: Arial, sans-serif;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
+.slider {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    border-radius: 10px;
 }
 
+.topping-option {
+    cursor: pointer;
+    margin-right: 10px;
+    padding-left: 10px;
+    border: 2px solid transparent;
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+    vertical-align: top;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.topping-option img {
+    width: 100%;
+    height: auto;
+}
+
+.topping-option.selected {
+    border-color: black;
+}
+
+.pizza-images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pizza-item {
+    width: 30%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.pizza-item img {
+    width: 100%;
+}
+
+.pizza-caption {
+    margin-top: 5px;
+}
+
+.cart-item {
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    height: 100vh;
+}
+
+.left-column {
+    width: 45%;
+    margin-right: 20px;
+}
+
+.right-column {
+    width: 50%;
+    background-color: rgb(252, 251, 251);
+    margin-left: 10px;
+    padding: 0 20px;
+}
+
+#addToCartButton {
+    width: 450px;
+    height: 100px;
+    background-color: #fa7900;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    margin-top: 0;
+    opacity: 0.9;
+    border-radius: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: opacity 0.3s;
+}
+
+#addToCartButton:hover {
+    opacity: 1;
+}
+
+#addToCartButton:focus {
+    outline: none;
+}
+
+#addToCartButton:active {
+    transform: translateY(2px);
+}
