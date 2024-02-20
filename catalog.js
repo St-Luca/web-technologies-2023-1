@@ -1,6 +1,6 @@
 import { Catalog } from "./src/components/catalog.js";
 
-const renderPostItem = item => `
+export const renderPostItem = item => `
     <a  
         href="posts/${item.id}"
         class="post-item"
@@ -16,7 +16,7 @@ const renderPostItem = item => `
     </a>
 `;
 
-const getPostItems = async ({ limit, page }) => {
+export const getPostItems = async ({ limit, page }) => {
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`);
         const total = +response.headers.get('x-total-count');
@@ -28,7 +28,7 @@ const getPostItems = async ({ limit, page }) => {
     }
 };
 
-const getPostItem = async (postId) => {
+export const getPostItem = async (postId) => {
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
         if (!response.ok) {
@@ -42,7 +42,7 @@ const getPostItem = async (postId) => {
     }
 };
 
-const showPostDetailPage = async (postId) => {
+export const showPostDetailPage = async (postId) => {
     const post = await getPostItem(postId);
     if (post) {
         // Очищаем контейнер для каталога
@@ -62,7 +62,7 @@ const showPostDetailPage = async (postId) => {
     }
 };
 
-const renderPhotoItem = item => `
+export const renderPhotoItem = item => `
     <a  
         href="photos/${item.id}"
         class="photo-item"
@@ -78,7 +78,7 @@ const renderPhotoItem = item => `
     </a>
 `;
 
-const getPhotoItems = async ({ limit, page }) => {
+export const getPhotoItems = async ({ limit, page }) => {
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${limit}&_page=${page}`);
         const total = +response.headers.get('x-total-count');
@@ -90,7 +90,7 @@ const getPhotoItems = async ({ limit, page }) => {
     }
 };
 
-const init = () => {
+export const init = () => {
     const catalog = document.getElementById('catalog');
     new Catalog(catalog, {
         renderItem: renderPostItem,
@@ -112,6 +112,6 @@ const init = () => {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
-    init();
+    //init();
 }
 
