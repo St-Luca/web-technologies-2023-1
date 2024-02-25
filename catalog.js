@@ -42,26 +42,6 @@ export const getPostItem = async (postId) => {
     }
 };
 
-export const showPostDetailPage = async (postId) => {
-    const post = await getPostItem(postId);
-    if (post) {
-        // Очищаем контейнер для каталога
-        const catalogItemsContainer = document.querySelector('[data-catalog-items]');
-        catalogItemsContainer.innerHTML = '';
-
-        // Отображаем информацию о посте
-        const postDetailContainer = document.createElement('div');
-        postDetailContainer.classList.add('post-detail');
-        postDetailContainer.innerHTML = `
-            <h1>${post.title}</h1>
-            <p>${post.body}</p>
-        `;
-        catalogItemsContainer.appendChild(postDetailContainer);
-    } else {
-        console.log('Post not found');
-    }
-};
-
 export const renderPhotoItem = item => `
     <a  
         href="photos/${item.id}"
@@ -104,7 +84,9 @@ export const init = () => {
             event.preventDefault();
             const postId = postItem.getAttribute('data-post-id');
             window.location.href = `post.html?id=${postId}`;
-            //await showPostDetailPage(postId);
+        }
+        else {
+            console.error('Error get closest post-item: ', error);
         }
     });
 };
@@ -112,6 +94,5 @@ export const init = () => {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
-    //init();
 }
 

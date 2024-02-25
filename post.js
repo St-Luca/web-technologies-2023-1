@@ -38,12 +38,12 @@ const showPostDetail = async (postId) => {
             const comments = await getCommentsForPost(postId);
             if (comments.length > 0) {
                 const commentsContainer = document.createElement('div');
-                commentsContainer.innerHTML = '<h2>Comments</h2>';
+                commentsContainer.innerHTML = '<h2 class = "comment">Comments</h2>';
                 comments.forEach(comment => {
                     const commentElement = document.createElement('div');
                     commentElement.innerHTML = `
-                        <h3>${comment.name}</h3>
-                        <p>${comment.body}</p>
+                        <h3 class = "comment">${comment.name}</h3>
+                        <p class = "comment">${comment.body}</p>
                     `;
                     commentsContainer.appendChild(commentElement);
                 });
