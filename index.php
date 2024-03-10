@@ -9,7 +9,12 @@
 
 <body>
     <div class="list-items" id="list-items">
-        <script type="module" src="script.js"></script>
+        <?php
+        include 'script.php';
+        echo buildMenu();
+        ?>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
