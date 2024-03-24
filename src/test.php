@@ -139,17 +139,7 @@ echo "<br>";
 echo "<br>";
 
 
-//Задание 5
-echo "Текущий год: " . date('Y') . "<br>";
-
-$dateInfo = getdate();
-echo "Текущий год: " . $dateInfo['year'] . "<br>";
-
-$date = new DateTime();
-echo "Текущий год: " . $date->format('Y') . "<br>";
-
-echo "<br>";
-echo "<br>";
+//Задание 5 в файле index.php
 
 
 //Задание 6
