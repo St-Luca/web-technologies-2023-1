@@ -1,6 +1,4 @@
 <?php
-$php_ini_path = php_ini_loaded_file();
-echo $php_ini_path;
 
 //Задание 1
 function printNumbersWithMessages()
@@ -80,9 +78,57 @@ echo "<br>";
 echo "<br>";
 
 
-//Задание 4
+//Задание 4 + 5
 
+$menu =  [
+    [
+        'title' => 'Пункт 1',
+        'link' => 'menu_1',
+        'children' => [[
+            'title' => 'Пункт 1.1',
+            'link' => 'sub-menu_1',
+            'children' => [
+                [
+                    'title' => 'Пункт 1.1.1',
+                    'link' => 'sub-menu_1-1',
+                ]
+            ]
+        ]],
+    ],
+    [
+        'title' => 'Пункт 2',
+        'link' => 'menu_2',
+        'children' => [
+            [
+                'title' => 'Пункт 2.1',
+                'link' => 'sub-menu_2',
+            ]
+        ]
+    ],
+    [
+        'title' => 'Пункт 3',
+        'link' => 'menu_3',
+    ]
+];
 
+function createMenu($menu)
+{
+    $output = '<ul>';
+    foreach ($menu as $value) {
+        $output .= '<li>';
+        $output .= "<a href='{$value['link']}'> {$value['title']} </a>";
+        if (isset($value['children'])) {
+            $output .= createMenu($value['children']);
+        }
+        $output .= '</li>';
+    }
+    $output .= '</ul>';
+    return $output;
+}
+echo createMenu($menu);
+
+echo "<br>";
+echo "<br>";
 
 //Задание 6
 foreach ($regions as $region => $cities) {
@@ -94,3 +140,19 @@ foreach ($regions as $region => $cities) {
     }
     echo "<br>";
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
